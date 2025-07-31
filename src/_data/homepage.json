@@ -2,10 +2,13 @@
   "mission_text": "We are a dedicated community for competitive, good-mannered (GM) dueling on the permanent Non-Ladder realm. Our goal is to unite all PvP fans in one place to duel, compete, and improve.",
   "feature3_list": [
     {
+      "item": "Official Announcements: Mods will post announcements for events."
+    },
+    {
       "item": "Easy Sign-Ups: Simply click a button to register. No sign-up sheets, no hassle."
     },
     {
-      "item": "Official Announcements and Hall of Fame"
+      "item": "Hall of Fame: Winners of past events will be enshrined for eternity in the glory of the Nexus."
     }
   ],
   "feature2_list": [
