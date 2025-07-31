@@ -1,0 +1,42 @@
+{
+  "mission_text": "We are a dedicated community for competitive, good-mannered (GM) dueling on the permanent Non-Ladder realm. Our goal is to unite all PvP fans in one place to duel, compete, and improve.",
+  "feature3_list": [
+    {
+      "item": "Easy Sign-Ups: Simply click a button to register. No sign-up sheets, no hassle."
+    },
+    {
+      "item": "Official Announcements and Hall of Fame"
+    }
+  ],
+  "feature2_list": [
+    {
+      "item": "Create Your Squad: Use simple commands to form your team and assign a captain."
+    },
+    {
+      "item": "Team ELO: Each team has its own ELO score to prove who is the most dominant group."
+    },
+    {
+      "item": "Direct Challenges: Formally challenge other teams and settle the score."
+    }
+  ],
+  "feature1_list": [
+    {
+      "item": "Sophisticated ELO System: Every match matters, with decisive victories giving bigger rewards."
+    },
+    {
+      "item": "Live Rankings: Watch your name climb the leaderboard in dedicated channels after every win. "
+    },
+    {
+      "item": "Fair Play: Anti-farming measures ensure a balanced and competitive environment."
+    }
+  ],
+  "mission_title": "Welcome to the Nexus",
+  "feature3_text": "Get ready for glory! Admins can organize official tournaments with ease using our integrated event system.",
+  "feature2_text": "Team combat is a cornerstone of our community. Our bot features a complete team management system for our 2v2, 3v3, and 4v4 ladders.",
+  "feature1_text": "Forget spreadsheets and manual tracking. Our server features 13 unique competitive 1v1 and team ladders, all managed in real-time by our custom bot.",
+  "feature1_title": "Automated ELO Ladders",
+  "feature2_title": "Team vs. Team Combat",
+  "feature3_title": "Regular Tournaments",
+  "subtitle": "The Home for Non-Ladder Diablo II: Resurrected PvP",
+  "title": "D2R PvP Nexus"
+}
