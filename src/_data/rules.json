@@ -1,0 +1,135 @@
+{
+  "intro_text": "This Code of Conduct applies to all members participating in duels, ladders, and discussions. Its purpose is to ensure a fair, respectful, and enjoyable environment for everyone. By dueling here, you agree to abide by these principles.",
+  "equipment_philosophy": {
+    "title": "2. Common Equipment & Skill Philosophy",
+    "intro": "To promote skill-based duels, the following items and skills are frequently restricted.",
+    "rules": [
+      {
+        "title": "Life Tap: ",
+        "desc": "The Life Tap curse from any source is almost always banned. *Melee ladders - if agreed upon, TapFormat is allowed."
+      },
+      {
+        "title": "Absorb: ",
+        "desc": "Stacking absorb is forbidden. A limit of one item per element is standard.(+ Cap Resistance at 75%)"
+      },
+      {
+        "title": "Slow Effects:",
+        "desc": "Items that apply \"Slows Target by %\" are typically banned."
+      },
+      {
+        "title": "Banned Skills: ",
+        "desc": "Certain skills are often restricted to ensure balance (e.g., Iron Maiden vs. Melee). - These can be voted upon and discussed in the Discord."
+      }
+    ]
+  },
+  "ladder_rules_intro": "This document outlines the general rules and philosophy that govern all official ladders. While this serves as our foundational ruleset, many ladders have unique rules tailored to their specific matchups.",
+  "final_reminder_text": "The rules listed above are a general guideline. Specific ladders will have different rules regarding allowed skills, banned items, locations, and procedures. Always check the ruleset for the specific ladder you are playing in before you begin your match. Failure to do so is not an excuse for breaking a rule.",
+  "ladder_rules_title": "Overall Ladder Rules & Guidelines",
+  "ladder_rules_responsibility": "It is every player's responsibility to read and understand the specific rules for the ladder they are participating in.",
+  "final_reminder_title": "IMPORTANT REMINDER",
+  "subtitle": "The foundation of a fair and competitive community.",
+  "title": "Rules & Etiquette",
+  "match_procedures": {
+    "title": "1. Common Match Procedures",
+    "rules": [
+      {
+        "title": "Default Location:",
+        "desc": "Hell Difficulty, Act 1, Blood Moor. (Note: Melee ladders use Normal Difficulty, Inner Cloister)."
+      },
+      {
+        "title": "Victory Condition: ",
+        "desc": "Typically First-to-10 (FT10)."
+      },
+      {
+        "title": "Duel Start:",
+        "desc": "Combat does not begin until both players have signaled they are ready (e.g., typing \"g\" or \"go\"). For many melee duels, holding Shift and attacking signals the start."
+      },
+      {
+        "title": "Positioning: ",
+        "desc": "ngling or \"shift-locking\" is not permitted in melee matchups."
+      },
+      {
+        "title": "Potions:",
+        "desc": "Healing and Rejuvenation potions are universally banned. Mana potions are typically allowed in caster/hybrid matchups."
+      },
+      {
+        "title": "Town Visits: ",
+        "desc": " Returning to town for any reason during a round is a forfeiture of that round."
+      },
+      {
+        "title": "Pre-buffing: ",
+        "desc": "Generally, only non-aggressive, timed buffs or specific summons are allowed to be cast in town before a round begins."
+      }
+    ]
+  },
+  "conduct_rules": [
+    {
+      "title": "1. Sportsmanship & Respect",
+      "rules": [
+        {
+          "title": "Respect Your Opponent: ",
+          "desc": " Win or lose, treat your fellow players with respect. Trash talk, harassment, and toxic behavior are not acceptable."
+        },
+        {
+          "title": "Play Fair: ",
+          "desc": "The goal is to test skill, not to exploit loopholes. Adhere to the spirit of the rules, not just the letter."
+        },
+        {
+          "title": "Be Honorable: ",
+          "desc": "Do not intentionally mislead opponents about rules or formats. Communicate clearly and honestly."
+        }
+      ]
+    },
+    {
+      "title": "2. Duel & Match Integrity",
+      "rules": [
+        {
+          "title": "Know the Rules:",
+          "desc": " It is your responsibility to know the specific ruleset for the duel you are participating in (e.g., Caster Ladder, ZealPK, Open 1v1)."
+        },
+        {
+          "title": "Honor the \"Go\" Call: ",
+          "desc": "Combat must not begin until both players have signaled they are ready according to the specific ruleset (e.g., typing \"go\" or \"g\", shift + attack in melee))."
+        },
+        {
+          "title": "No Mid-Duel Changes:",
+          "desc": "Do not respec (use a Token) or make unapproved changes to your character during a match."
+        },
+        {
+          "title": "Handle Draws Fairly: ",
+          "desc": " Upon mutual death, the round is redone."
+        }
+      ]
+    },
+    {
+      "title": "3. Honesty & Fair Play",
+      "rules": [
+        {
+          "title": "No Cheating:",
+          "desc": "The use of hacks, maphacks, bots, or any third-party program that provides an unfair advantage is strictly forbidden and will result in immediate and permanent removal."
+        },
+        {
+          "title": "Gear Checks: ",
+          "desc": "If a gear check is requested (where permitted - linking certain gear), comply promptly and honestly."
+        },
+        {
+          "title": "Accusations:",
+          "desc": "If you suspect a rule has been broken, remain calm. Complete the match if possible, save any evidence (screenshots, video), and contact an admin privately. Do not make public accusations in general chat."
+        }
+      ]
+    },
+    {
+      "title": "4. Communication",
+      "rules": [
+        {
+          "title": "Clarity is Key:",
+          "desc": "Be clear when arranging matches, choosing formats, and starting rounds."
+        },
+        {
+          "title": "Dispute Resolution: ",
+          "desc": "If a disagreement occurs, try to resolve it respectfully with your opponent first. If a resolution cannot be found, contact an admin or moderator for a final ruling. The admin's decision is final."
+        }
+      ]
+    }
+  ]
+}
