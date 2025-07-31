@@ -52,8 +52,12 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            fetch('/_data/rules.json')
-                .then(response => response.json())
+            // UPDATED: The path now includes the 'src' folder.
+            fetch('/src/_data/rules.json')
+                .then(response => {
+                    if (!response.ok) { throw new Error('Failed to load rules.json'); }
+                    return response.json();
+                })
                 .then(data => {
                     document.getElementById('page-title').textContent = data.title;
                     document.getElementById('page-subtitle').textContent = data.subtitle;
@@ -67,13 +71,13 @@
                         <div class="space-y-8">
                     `;
 
-                    data.conduct_rules.forEach(section => {
+                    (data.conduct_rules || []).forEach(section => {
                         content += `
                             <div class="rule-section rounded-lg p-8">
                                 <h2 class="text-3xl font-bold text-red-600 mb-4 font-cinzel">${section.title}</h2>
                                 <ul class="list-disc list-inside text-gray-300 space-y-3">
                         `;
-                        section.rules.forEach(rule => {
+                        (section.rules || []).forEach(rule => {
                             content += `<li><span class="font-bold text-white">${rule.title}:</span> ${rule.desc}</li>`;
                         });
                         content += `</ul></div>`;
@@ -92,7 +96,7 @@
                                 <h2 class="text-3xl font-bold text-red-600 mb-4 font-cinzel">${data.match_procedures.title}</h2>
                                 <ul class="list-disc list-inside text-gray-300 space-y-3">
                     `;
-                    data.match_procedures.rules.forEach(rule => {
+                    (data.match_procedures.rules || []).forEach(rule => {
                         content += `<li><span class="font-bold text-white">${rule.title}:</span> ${rule.desc}</li>`;
                     });
                     content += `
@@ -103,7 +107,7 @@
                                 <p class="text-gray-400 mb-4">${data.equipment_philosophy.intro}</p>
                                 <ul class="list-disc list-inside text-gray-300 space-y-3">
                     `;
-                    data.equipment_philosophy.rules.forEach(rule => {
+                    (data.equipment_philosophy.rules || []).forEach(rule => {
                         content += `<li><span class="font-bold text-white">${rule.title}:</span> ${rule.desc}</li>`;
                     });
                     content += `
@@ -118,7 +122,11 @@
                     
                     container.innerHTML = content;
                 })
-                .catch(error => console.error('Error loading rules data:', error));
+                .catch(error => {
+                    console.error('Error loading rules data:', error);
+                    // Optional: Display an error message on the page
+                    document.getElementById('rules-container').innerHTML = `<p class="text-center text-red-500">Could not load rules. Please try again later.</p>`;
+                });
         });
     </script>
 
