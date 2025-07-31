@@ -1,17 +1,15 @@
 # This is the master configuration file for your website's admin panel.
 
 # The backend tells Netlify CMS how to connect to your project's repository.
-# You will need to connect your Netlify site to a GitHub repository for this to work.
 backend:
   name: git-gateway
   branch: main # Or master, depending on your repository's default branch
 
 # This defines where your uploaded images will be stored.
-media_folder: "assets/images"
+media_folder: "src/assets/images"
 public_folder: "/assets/images"
 
-# These are the content types you can edit. We'll have one for "Pages" (like Home and Rules)
-# and another for "Events" (which can have many entries).
+# These are the content types you can edit.
 collections:
   # The "Pages" collection is for single pages that you edit.
   - name: "pages"
@@ -50,22 +48,47 @@ collections:
           - { label: "Page Title", name: "title", widget: "string" }
           - { label: "Page Subtitle", name: "subtitle", widget: "string" }
           - { label: "Introduction Text", name: "intro_text", widget: "text" }
-          - { label: "General Conduct Rules", name: "conduct_rules", widget: "list", fields: [
-              { label: "Rule Title", name: "title", widget: "string" },
-              { label: "Rule Description", name: "desc", widget: "string" }
-            ]}
+          - label: "General Conduct Rules"
+            name: "conduct_rules"
+            widget: "list"
+            fields:
+              - { label: "Section Title", name: "title", widget: "string" }
+              - label: "Rules in this Section"
+                name: "rules"
+                widget: "list"
+                fields:
+                  - { label: "Rule Title", name: "title", widget: "string" }
+                  - { label: "Rule Description", name: "desc", widget: "string" }
           - { label: "Ladder Rules Title", name: "ladder_rules_title", widget: "string" }
           - { label: "Ladder Rules Intro", name: "ladder_rules_intro", widget: "text" }
-          - { label: "Match Procedures", name: "match_procedures", widget: "list", fields: [
-              { label: "Rule Title", name: "title", widget: "string" },
-              { label: "Rule Description", name: "desc", widget: "string" }
-            ]}
-          - { label: "Equipment Philosophy", name: "equipment_philosophy", widget: "list", fields: [
-              { label: "Rule Title", name: "title", widget: "string" },
-              { label: "Rule Description", name: "desc", widget: "string" }
-            ]}
+          - { label: "Ladder Rules Responsibility Note", name: "ladder_rules_responsibility", widget: "string" }
+          - label: "Common Match Procedures"
+            name: "match_procedures"
+            widget: "object"
+            fields:
+              - { label: "Section Title", name: "title", widget: "string" }
+              - label: "Rules"
+                name: "rules"
+                widget: "list"
+                fields:
+                  - { label: "Rule Title", name: "title", widget: "string" }
+                  - { label: "Rule Description", name: "desc", widget: "string" }
+          - label: "Common Equipment Philosophy"
+            name: "equipment_philosophy"
+            widget: "object"
+            fields:
+              - { label: "Section Title", name: "title", widget: "string" }
+              - { label: "Section Intro", name: "intro", widget: "string" }
+              - label: "Rules"
+                name: "rules"
+                widget: "list"
+                fields:
+                  - { label: "Rule Title", name: "title", widget: "string" }
+                  - { label: "Rule Description", name: "desc", widget: "string" }
+          - { label: "Final Reminder Title", name: "final_reminder_title", widget: "string" }
+          - { label: "Final Reminder Text", name: "final_reminder_text", widget: "text" }
 
-  # The "Events" collection is for repeatable items. You can add as many events as you want.
+  # The "Events" collection is for repeatable items.
   - name: "events"
     label: "Community Events"
     folder: "src/events"
