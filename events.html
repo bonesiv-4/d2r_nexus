@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
     <!-- Netlify Identity Widget Script -->
     <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- ADDED: Markdown Translator Script -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0c0a09; }
         .font-cinzel { font-family: 'Cinzel Decorative', cursive; }
@@ -93,6 +95,9 @@
                     const eventDate = new Date(event.date);
                     const dateString = eventDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
                     
+                    // UPDATED: Use marked.parse() to convert markdown to HTML
+                    const eventBodyHtml = event.body ? marked.parse(event.body) : '';
+
                     const eventCard = `
                         <div class="event-card rounded-lg overflow-hidden flex flex-col md:flex-row">
                             ${event.image ? `<img src="${event.image}" alt="${event.title}" class="w-full md:w-1/3 object-cover">` : ''}
@@ -102,7 +107,7 @@
                                     <span class="status-${event.status.toLowerCase().replace(' ', '')} text-xs font-bold uppercase px-2 py-1 rounded-full whitespace-nowrap">${event.status}</span>
                                 </div>
                                 <p class="text-sm text-gray-400 mb-4">${dateString}</p>
-                                <div class="text-gray-300">${event.body.replace(/\n/g, '<br>')}</div>
+                                <div class="text-gray-300 prose prose-invert">${eventBodyHtml}</div>
                             </div>
                         </div>
                     `;
@@ -124,7 +129,6 @@
                 }
             };
 
-            // Fetch the generated events data file
             fetch('/_data/events.json')
                 .then(response => {
                     if (!response.ok) {
@@ -137,7 +141,7 @@
                 })
                 .catch(error => {
                     console.error('Error loading events data:', error);
-                    renderEvents([]); // Render with no events if the file fails to load
+                    renderEvents([]);
                 });
         });
     </script>
