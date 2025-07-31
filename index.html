@@ -93,7 +93,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            fetch('/_data/homepage.json')
+            // UPDATED: The path now includes the 'src' folder.
+            fetch('/src/_data/homepage.json')
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('main-title').textContent = data.title;
