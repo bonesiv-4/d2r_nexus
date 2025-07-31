@@ -71,21 +71,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // This script now fetches a list of event files, which is how Netlify CMS stores them.
-            // This requires a more advanced setup to work perfectly, but we will simulate it here.
-            // For a full solution, a build step is needed to generate a single events.json file.
-            
-            // We will fetch from a placeholder `events.json` file in your _data folder for now.
-            // When you add events in the CMS, it will create individual files in `/src/events/`.
-            // A build tool would be needed to combine these into a single file for the site to read.
-            
-            // For now, let's assume we have a way to get all events.
-            // This is a simplified approach to get you started.
-            
-            // This part of the code is complex. We will simulate fetching for now.
-            const allEvents = []; // This will hold events from the CMS
-            
-            // Let's create a function to render the events
             const renderEvents = (events) => {
                 const upcomingContainer = document.getElementById('upcoming-events-container');
                 const pastContainer = document.getElementById('past-events-container');
@@ -93,7 +78,7 @@
                 upcomingContainer.innerHTML = '';
                 pastContainer.innerHTML = '';
 
-                if (events.length === 0) {
+                if (!events || events.length === 0) {
                     upcomingContainer.innerHTML = `<p class="text-center text-gray-400">No upcoming events scheduled. Check back soon!</p>`;
                     pastContainer.innerHTML = `<p class="text-center text-gray-400">No past events yet.</p>`;
                     return;
@@ -131,19 +116,29 @@
                     }
                 });
 
-                if (upcomingCount === 0) {
+                 if (upcomingCount === 0) {
                     upcomingContainer.innerHTML = `<p class="text-center text-gray-400">No upcoming events scheduled. Check back soon!</p>`;
                 }
-                if (pastCount === 0) {
+                 if (pastCount === 0) {
                     pastContainer.innerHTML = `<p class="text-center text-gray-400">No past events yet.</p>`;
                 }
             };
 
-            // Initially render with an empty array
-            renderEvents([]);
-
-            // In a real build, you would fetch a single JSON file here that contains all events.
-            // For now, the page will correctly show "No events" until you add them via the CMS.
+            // Fetch the generated events data file
+            fetch('/_data/events.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    renderEvents(data);
+                })
+                .catch(error => {
+                    console.error('Error loading events data:', error);
+                    renderEvents([]); // Render with no events if the file fails to load
+                });
         });
     </script>
 
