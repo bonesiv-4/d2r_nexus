@@ -104,29 +104,35 @@
                     document.getElementById('feature1-title').textContent = data.feature1_title;
                     document.getElementById('feature1-text').textContent = data.feature1_text;
                     const feature1List = document.getElementById('feature1-list');
-                    data.feature1_list.forEach(item => {
-                        const li = document.createElement('li');
-                        li.innerHTML = `<span class="font-bold text-gray-300">${item.item.split(':')[0]}:</span>${item.item.split(':').slice(1).join(':')}`;
-                        feature1List.appendChild(li);
-                    });
+                    if (data.feature1_list) {
+                        data.feature1_list.forEach(item => {
+                            const li = document.createElement('li');
+                            li.innerHTML = `<span class="font-bold text-gray-300">${item.item.split(':')[0]}:</span>${item.item.split(':').slice(1).join(':')}`;
+                            feature1List.appendChild(li);
+                        });
+                    }
 
                     document.getElementById('feature2-title').textContent = data.feature2_title;
                     document.getElementById('feature2-text').textContent = data.feature2_text;
                     const feature2List = document.getElementById('feature2-list');
-                    data.feature2_list.forEach(item => {
-                        const li = document.createElement('li');
-                        li.innerHTML = `<span class="font-bold text-gray-300">${item.item.split(':')[0]}:</span>${item.item.split(':').slice(1).join(':')}`;
-                        feature2List.appendChild(li);
-                    });
+                     if (data.feature2_list) {
+                        data.feature2_list.forEach(item => {
+                            const li = document.createElement('li');
+                            li.innerHTML = `<span class="font-bold text-gray-300">${item.item.split(':')[0]}:</span>${item.item.split(':').slice(1).join(':')}`;
+                            feature2List.appendChild(li);
+                        });
+                    }
 
                     document.getElementById('feature3-title').textContent = data.feature3_title;
                     document.getElementById('feature3-text').textContent = data.feature3_text;
                     const feature3List = document.getElementById('feature3-list');
-                    data.feature3_list.forEach(item => {
-                        const li = document.createElement('li');
-                        li.innerHTML = `<span class="font-bold text-gray-300">${item.item.split(':')[0]}:</span>${item.item.split(':').slice(1).join(':')}`;
-                        feature3List.appendChild(li);
-                    });
+                    if (data.feature3_list) {
+                        data.feature3_list.forEach(item => {
+                            const li = document.createElement('li');
+                            li.innerHTML = `<span class="font-bold text-gray-300">${item.item.split(':')[0]}:</span>${item.item.split(':').slice(1).join(':')}`;
+                            feature3List.appendChild(li);
+                        });
+                    }
                 })
                 .catch(error => console.error('Error loading homepage data:', error));
         });
