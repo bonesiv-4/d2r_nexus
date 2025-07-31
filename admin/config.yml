@@ -1,0 +1,79 @@
+# This is the master configuration file for your website's admin panel.
+
+# The backend tells Netlify CMS how to connect to your project's repository.
+# You will need to connect your Netlify site to a GitHub repository for this to work.
+backend:
+  name: git-gateway
+  branch: main # Or master, depending on your repository's default branch
+
+# This defines where your uploaded images will be stored.
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+# These are the content types you can edit. We'll have one for "Pages" (like Home and Rules)
+# and another for "Events" (which can have many entries).
+collections:
+  # The "Pages" collection is for single pages that you edit.
+  - name: "pages"
+    label: "Website Pages"
+    files:
+      # Homepage configuration
+      - file: "src/_data/homepage.json"
+        label: "Homepage"
+        name: "homepage"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Mission Statement Title", name: "mission_title", widget: "string" }
+          - { label: "Mission Statement Text", name: "mission_text", widget: "text" }
+          - { label: "Feature 1 Title", name: "feature1_title", widget: "string" }
+          - { label: "Feature 1 Text", name: "feature1_text", widget: "text" }
+          - { label: "Feature 1 List", name: "feature1_list", widget: "list", fields: [
+              { label: "List Item", name: "item", widget: "string" }
+            ]}
+          - { label: "Feature 2 Title", name: "feature2_title", widget: "string" }
+          - { label: "Feature 2 Text", name: "feature2_text", widget: "text" }
+          - { label: "Feature 2 List", name: "feature2_list", widget: "list", fields: [
+              { label: "List Item", name: "item", widget: "string" }
+            ]}
+          - { label: "Feature 3 Title", name: "feature3_title", widget: "string" }
+          - { label: "Feature 3 Text", name: "feature3_text", widget: "text" }
+          - { label: "Feature 3 List", name: "feature3_list", widget: "list", fields: [
+              { label: "List Item", name: "item", widget: "string" }
+            ]}
+
+      # Rules Page configuration
+      - file: "src/_data/rules.json"
+        label: "Rules & Etiquette Page"
+        name: "rules"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string" }
+          - { label: "Page Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Introduction Text", name: "intro_text", widget: "text" }
+          - { label: "General Conduct Rules", name: "conduct_rules", widget: "list", fields: [
+              { label: "Rule Title", name: "title", widget: "string" },
+              { label: "Rule Description", name: "desc", widget: "string" }
+            ]}
+          - { label: "Ladder Rules Title", name: "ladder_rules_title", widget: "string" }
+          - { label: "Ladder Rules Intro", name: "ladder_rules_intro", widget: "text" }
+          - { label: "Match Procedures", name: "match_procedures", widget: "list", fields: [
+              { label: "Rule Title", name: "title", widget: "string" },
+              { label: "Rule Description", name: "desc", widget: "string" }
+            ]}
+          - { label: "Equipment Philosophy", name: "equipment_philosophy", widget: "list", fields: [
+              { label: "Rule Title", name: "title", widget: "string" },
+              { label: "Rule Description", name: "desc", widget: "string" }
+            ]}
+
+  # The "Events" collection is for repeatable items. You can add as many events as you want.
+  - name: "events"
+    label: "Community Events"
+    folder: "src/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Event Title", name: "title", widget: "string" }
+      - { label: "Event Date", name: "date", widget: "datetime" }
+      - { label: "Event Status", name: "status", widget: "select", options: ["Upcoming", "In Progress", "Completed"] }
+      - { label: "Event Image", name: "image", widget: "image", optional: true }
+      - { label: "Event Description", name: "body", widget: "markdown" }
