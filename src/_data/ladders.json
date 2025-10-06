@@ -1,0 +1,60 @@
+{
+  "title": "Current Ladders",
+  "subtitle": "X = Empty O = Active",
+  "categories": [
+    {
+      "title": "Caster",
+      "ladders": [
+        {
+          "name": "X Necromancer vs Necromancer",
+          "desc": "NvN"
+        },
+        {
+          "name": "X Sorc vs Sorc",
+          "desc": "SvS"
+        },
+        {
+          "name": "Caster",
+          "desc": "All Caster Classes Allowed"
+        }
+      ]
+    },
+    {
+      "title": "Melee",
+      "ladders": [
+        {
+          "name": " X Zpk",
+          "desc": "Zeal vs Zeal"
+        },
+        {
+          "name": "X BvB",
+          "desc": "Barb vs Barb"
+        },
+        {
+          "name": "X Fury vs Fury",
+          "desc": "Druid Fury vs Fury"
+        },
+        {
+          "name": "X All Class Melee",
+          "desc": "Jab, Conc, Fury, Zeal"
+        }
+      ]
+    },
+    {
+      "title": "Mid-Level Dueling (MLD) Lvl 59 Max"
+    },
+    {
+      "title": "Other",
+      "ladders": [
+        {
+          "name": "X sinPk",
+          "desc": "Assassin vs Assassin"
+        },
+        {
+          "name": "X Team",
+          "desc": "2v2, 3v3, 4v4"
+        }
+      ]
+    }
+  ]
+}
