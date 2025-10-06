@@ -6,16 +6,16 @@
       "title": "Caster",
       "ladders": [
         {
-          "name": "X Necromancer vs Necromancer",
-          "desc": "NvN"
+          "name": "Necromancer vs Necromancer",
+          "desc": "X"
         },
         {
-          "name": "X Sorc vs Sorc",
-          "desc": "SvS"
+          "name": "Sorc vs Sorc",
+          "desc": "X"
         },
         {
           "name": "Caster",
-          "desc": "All Caster Classes Allowed"
+          "desc": "X"
         }
       ]
     },
@@ -23,20 +23,20 @@
       "title": "Melee",
       "ladders": [
         {
-          "name": " X Zpk",
-          "desc": "Zeal vs Zeal"
+          "name": "Zpk",
+          "desc": "X"
         },
         {
-          "name": "X BvB",
-          "desc": "Barb vs Barb"
+          "name": "BvB",
+          "desc": "X"
         },
         {
-          "name": "X Fury vs Fury",
-          "desc": "Druid Fury vs Fury"
+          "name": "Fury vs Fury",
+          "desc": "X"
         },
         {
-          "name": "X All Class Melee",
-          "desc": "Jab, Conc, Fury, Zeal"
+          "name": "All Class Melee",
+          "desc": "Jab, Conc, Fury, Zeal - X"
         }
       ]
     },
@@ -47,11 +47,11 @@
       "title": "Other",
       "ladders": [
         {
-          "name": "X sinPk",
-          "desc": "Assassin vs Assassin"
+          "name": "sinPk",
+          "desc": "X"
         },
         {
-          "name": "X Team",
+          "name": "Team",
           "desc": "2v2, 3v3, 4v4"
         }
       ]
