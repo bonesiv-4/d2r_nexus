@@ -88,6 +88,25 @@ collections:
           - { label: "Final Reminder Title", name: "final_reminder_title", widget: "string" }
           - { label: "Final Reminder Text", name: "final_reminder_text", widget: "text" }
 
+      # NEW: Ladders Page configuration
+      - file: "src/_data/ladders.json"
+        label: "Ladders Page"
+        name: "ladders"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string" }
+          - { label: "Page Subtitle", name: "subtitle", widget: "string" }
+          - label: "Ladder Categories"
+            name: "categories"
+            widget: "list"
+            fields:
+              - { label: "Category Title", name: "title", widget: "string" }
+              - label: "Ladders in this Category"
+                name: "ladders"
+                widget: "list"
+                fields:
+                  - { label: "Ladder Name", name: "name", widget: "string" }
+                  - { label: "Description", name: "desc", widget: "string" }
+
   # The "Events" collection is for repeatable items.
   - name: "events"
     label: "Community Events"
@@ -100,3 +119,15 @@ collections:
       - { label: "Event Status", name: "status", widget: "select", options: ["Upcoming", "In Progress", "Completed"] }
       - { label: "Event Image", name: "image", widget: "image", optional: true }
       - { label: "Event Description", name: "body", widget: "markdown" }
+
+  # NEW: The "News" collection for blog-style articles
+  - name: "news"
+    label: "News Articles"
+    folder: "src/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Article Title", name: "title", widget: "string" }
+      - { label: "Publication Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Article Body", name: "body", widget: "markdown" }
