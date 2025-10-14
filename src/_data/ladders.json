@@ -3,18 +3,22 @@
   "subtitle": "X = Empty O = Active",
   "categories": [
     {
-      "title": "Caster",
+      "title": "1v1 and Team",
       "ladders": [
         {
-          "name": "Necromancer vs Necromancer",
+          "name": "💀1v1",
           "desc": "X"
         },
         {
-          "name": "Sorc vs Sorc",
+          "name": "💀2v2",
           "desc": "X"
         },
         {
-          "name": "Caster",
+          "name": "💀3v3",
+          "desc": "X"
+        },
+        {
+          "name": "💀4v4",
           "desc": "X"
         }
       ]
@@ -23,36 +27,54 @@
       "title": "Melee",
       "ladders": [
         {
-          "name": "Zpk",
+          "name": "🗡️Zpk",
           "desc": "X"
         },
         {
-          "name": "BvB",
+          "name": "🪓BvB",
           "desc": "X"
         },
         {
-          "name": "Fury vs Fury",
+          "name": "🐺Fury vs Fury",
           "desc": "X"
         },
         {
-          "name": "All Class Melee",
-          "desc": "Jab, Conc, Fury, Zeal - X"
+          "name": "⚔️ All Class Melee",
+          "desc": "X"
         }
       ]
     },
     {
-      "title": "Mid-Level Dueling (MLD) Lvl 59 Max"
-    },
-    {
-      "title": "Other",
+      "title": "Class Ladders",
       "ladders": [
         {
-          "name": "sinPk",
+          "name": "🕸️sinPK",
           "desc": "X"
         },
         {
-          "name": "Team",
-          "desc": "2v2, 3v3, 4v4"
+          "name": "⛧NvN",
+          "desc": "X"
+        },
+        {
+          "name": "🏹 Zon vs Zon",
+          "desc": "X"
+        },
+        {
+          "name": "🗲🔥❄️SvS",
+          "desc": "X"
+        }
+      ]
+    },
+    {
+      "title": "Niche",
+      "ladders": [
+        {
+          "name": "💥Level 59 MLD - All Class",
+          "desc": "O"
+        },
+        {
+          "name": "☄️Caster",
+          "desc": "X"
         }
       ]
     }
