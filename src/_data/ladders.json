@@ -52,10 +52,6 @@
           "desc": "X"
         },
         {
-          "name": "⛧NvN",
-          "desc": "X"
-        },
-        {
           "name": "🏹 Zon vs Zon",
           "desc": "X"
         },
@@ -75,6 +71,10 @@
         {
           "name": "☄️Caster",
           "desc": "X"
+        },
+        {
+          "name": "⛧NvN - Poison Dagger Stabby Stab ",
+          "desc": "O"
         }
       ]
     }
