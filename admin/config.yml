@@ -1,70 +1,55 @@
-# This is the master configuration file for your website's admin panel.
-
-# The backend tells Netlify CMS how to connect to your project's repository.
+# This is the backend configuration. It tells the CMS how to connect to your site.
 backend:
-  name: git-gateway
-  branch: main # Or master, depending on your repository's default branch
+  name: git-gateway # Use Netlify's Git Gateway for authentication
+  branch: main # The branch to save content to (usually "main" or "master")
 
-# This defines where your uploaded images will be stored.
-media_folder: "src/assets/images"
-public_folder: "/assets/images"
+# This controls where your media (like images) is saved.
+# We've changed this to save to a main "uploads" folder.
+media_folder: "uploads"
+public_folder: "/uploads"
 
-# These are the content types you can edit.
+# This defines all the editable sections (collections) of your website.
 collections:
-  # The "Pages" collection is for single pages that you edit.
-  - name: "pages"
+  # 1. Collection for static pages like Home and Rules
+  - name: "website_pages"
     label: "Website Pages"
     files:
-      # Homepage configuration
-      - file: "src/_data/homepage.json"
-        label: "Homepage"
+      # --- HOMEPAGE ---
+      - label: "Homepage"
         name: "homepage"
+        file: "src/_data/homepage.json" # The file it will edit
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Subtitle", name: "subtitle", widget: "string" }
-          - { label: "Mission Statement Title", name: "mission_title", widget: "string" }
-          - { label: "Mission Statement Text", name: "mission_text", widget: "text" }
-          - { label: "Feature 1 Title", name: "feature1_title", widget: "string" }
-          - { label: "Feature 1 Text", name: "feature1_text", widget: "text" }
-          - { label: "Feature 1 List", name: "feature1_list", widget: "list", fields: [
-              { label: "List Item", name: "item", widget: "string" }
-            ]}
-          - { label: "Feature 2 Title", name: "feature2_title", widget: "string" }
-          - { label: "Feature 2 Text", name: "feature2_text", widget: "text" }
-          - { label: "Feature 2 List", name: "feature2_list", widget: "list", fields: [
-              { label: "List Item", name: "item", widget: "string" }
-            ]}
-          - { label: "Feature 3 Title", name: "feature3_title", widget: "string" }
-          - { label: "Feature 3 Text", name: "feature3_text", widget: "text" }
-          - { label: "Feature 3 List", name: "feature3_list", widget: "list", fields: [
-              { label: "List Item", name: "item", widget: "string" }
-            ]}
+          - { label: "Page Title", name: "title", widget: "string" }
+          - { label: "Page Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Mission Statement", name: "mission_statement", widget: "markdown" }
+          - label: "Key Features List"
+            name: "features"
+            widget: "list"
+            fields:
+              - { label: "Feature", name: "feature", widget: "string" }
 
-      # Rules Page configuration
-      - file: "src/_data/rules.json"
-        label: "Rules & Etiquette Page"
+      # --- RULES PAGE ---
+      - label: "Rules & Etiquette Page"
         name: "rules"
+        file: "src/_data/rules.json" # The file it will edit
         fields:
           - { label: "Page Title", name: "title", widget: "string" }
           - { label: "Page Subtitle", name: "subtitle", widget: "string" }
-          - { label: "Introduction Text", name: "intro_text", widget: "text" }
-          - label: "General Conduct Rules"
-            name: "conduct_rules"
+          - { label: "Introduction Text", name: "intro", widget: "markdown" }
+          - label: "General Conduct Rules Sections"
+            name: "conduct_sections"
             widget: "list"
             fields:
               - { label: "Section Title", name: "title", widget: "string" }
-              - label: "Rules in this Section"
+              - label: "Rules"
                 name: "rules"
                 widget: "list"
                 fields:
                   - { label: "Rule Title", name: "title", widget: "string" }
-                  - { label: "Rule Description", name: "desc", widget: "string" }
-          - { label: "Ladder Rules Title", name: "ladder_rules_title", widget: "string" }
-          - { label: "Ladder Rules Intro", name: "ladder_rules_intro", widget: "text" }
-          - { label: "Ladder Rules Responsibility Note", name: "ladder_rules_responsibility", widget: "string" }
-          - label: "Common Match Procedures"
-            name: "match_procedures"
-            widget: "object"
+                  - { label: "Rule Description", name: "desc", widget: "text" }
+          - label: "Ladder Rules Sections"
+            name: "ladder_sections"
+            widget: "list"
             fields:
               - { label: "Section Title", name: "title", widget: "string" }
               - label: "Rules"
@@ -72,62 +57,48 @@ collections:
                 widget: "list"
                 fields:
                   - { label: "Rule Title", name: "title", widget: "string" }
-                  - { label: "Rule Description", name: "desc", widget: "string" }
-          - label: "Common Equipment Philosophy"
-            name: "equipment_philosophy"
-            widget: "object"
-            fields:
-              - { label: "Section Title", name: "title", widget: "string" }
-              - { label: "Section Intro", name: "intro", widget: "string" }
-              - label: "Rules"
-                name: "rules"
-                widget: "list"
-                fields:
-                  - { label: "Rule Title", name: "title", widget: "string" }
-                  - { label: "Rule Description", name: "desc", widget: "string" }
-          - { label: "Final Reminder Title", name: "final_reminder_title", widget: "string" }
-          - { label: "Final Reminder Text", name: "final_reminder_text", widget: "text" }
+                  - { label: "Rule Description", name: "desc", widget: "text" }
 
-      # NEW: Ladders Page configuration
-      - file: "src/_data/ladders.json"
-        label: "Ladders Page"
+      # --- LADDERS PAGE ---
+      - label: "Ladders Page"
         name: "ladders"
+        file: "src/_data/ladders.json" # The file it will edit
         fields:
           - { label: "Page Title", name: "title", widget: "string" }
           - { label: "Page Subtitle", name: "subtitle", widget: "string" }
-          - label: "Ladder Categories"
-            name: "categories"
+          - { label: "Introduction Text", name: "intro", widget: "markdown" }
+          - label: "Ladder List"
+            name: "ladder_list"
             widget: "list"
             fields:
-              - { label: "Category Title", name: "title", widget: "string" }
-              - label: "Ladders in this Category"
-                name: "ladders"
-                widget: "list"
-                fields:
-                  - { label: "Ladder Name", name: "name", widget: "string" }
-                  - { label: "Description", name: "desc", widget: "string" }
+              - { label: "Ladder Name", name: "name", widget: "string" }
+              - { label: "Description", name: "desc", widget: "text" }
 
-  # The "Events" collection is for repeatable items.
-  - name: "events"
+  # 2. Collection for repeatable items like Events
+  - name: "community_events"
     label: "Community Events"
-    folder: "src/events"
+    folder: "src/events" # Folder where new event files will be created
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "Event Title", name: "title", widget: "string" }
-      - { label: "Event Date", name: "date", widget: "datetime" }
-      - { label: "Event Status", name: "status", widget: "select", options: ["Upcoming", "In Progress", "Completed"] }
-      - { label: "Event Image", name: "image", widget: "image", optional: true }
-      - { label: "Event Description", name: "body", widget: "markdown" }
+      - { label: "Event Date & Time", name: "date", widget: "datetime" }
+      - label: "Event Status"
+        name: "status"
+        widget: "select"
+        options: ["Upcoming", "In Progress", "Completed"]
+      - { label: "Event Details (Body)", name: "body", widget: "markdown" }
 
-  # NEW: The "News" collection for blog-style articles
-  - name: "news"
+  # 3. Collection for repeatable items like News
+  - name: "news_articles"
     label: "News Articles"
-    folder: "src/news"
+    folder: "src/news" # Folder where new news files will be created
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "Article Title", name: "title", widget: "string" }
       - { label: "Publication Date", name: "date", widget: "datetime" }
       - { label: "Author", name: "author", widget: "string" }
-      - { label: "Article Body", name: "body", widget: "markdown" }
+      - { label: "Article Content (Body)", name: "body", widget: "markdown" }
+
+```
