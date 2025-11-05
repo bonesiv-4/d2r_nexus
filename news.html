@@ -59,14 +59,15 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            fetch('/news.json')
+            // *** THIS IS THE CORRECTED PATH (removed leading slash) ***
+            fetch('src/_data/news.json') 
                 .then(response => {
                     if (!response.ok) { throw new Error('Failed to load news.json'); }
                     return response.json();
                 })
                 .then(articles => {
                     const container = document.getElementById('news-container');
-                    if (articles.length === 0) {
+                    if (!articles || articles.length === 0) {
                         container.innerHTML = '<p class="text-center text-gray-400">No news articles have been posted yet. Check back soon!</p>';
                         return;
                     }
