@@ -23,6 +23,4 @@ Gear up your new toons, and let's see who rises to the top.
 
 See you in the Blood Moor!
 
-<!--EndFragment-->
-
 ![stabby stabs](/assets/images/ir2fk4e.png)
