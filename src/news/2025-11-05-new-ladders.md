@@ -11,7 +11,7 @@ We're kicking off a **Level 59 Mid-Level Duels (MLD)** ladder! This is where tr
 
 ### Ladder 2: Stabby Stabs (Melee Necromancer - Poison Dagger)
 
-![](/assets/images/ir2fk4e.png)
+![](/uploads/ir2fk4e.png)
 
 That's right. Our second ladder is a true test of skill, stripping the Necromancer down to its core: **Melee Necromancer - Poison Dagger**.
 
