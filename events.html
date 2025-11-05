@@ -8,65 +8,70 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
-    <!-- Netlify Identity Widget Script -->
     <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <!-- ADDED: Markdown Translator Script -->
+    <!-- Translator for Rich Text (Markdown) -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0c0a09; }
         .font-cinzel { font-family: 'Cinzel Decorative', cursive; }
-        .event-card { background-color: rgba(17, 24, 39, 0.6); border: 1px solid #374151; backdrop-filter: blur(4px); }
         .nav-link { transition: color 0.3s ease; }
         .nav-link:hover { color: #dc2626; }
-        .status-upcoming { background-color: #166534; color: #bbf7d0; }
-        .status-completed { background-color: #4b5563; color: #d1d5db; }
-        .status-inprogress { background-color: #a16207; color: #fef08a; }
+        .event-card { background-color: rgba(17, 24, 39, 0.6); border: 1px solid #374151; }
+        /* Styles for the rich text content */
+        .prose-styles h1, .prose-styles h2, .prose-styles h3 { color: #f3f4f6; }
+        .prose-styles p { color: #d1d5db; }
+        .prose-styles a { color: #ef4444; }
+        .prose-styles strong { color: #ffffff; }
+        .prose-styles ul { list-style-type: disc; padding-left: 1.5rem; }
     </style>
 </head>
 <body class="bg-stone-900 text-gray-200">
 
-<nav class="bg-black bg-opacity-80 backdrop-blur-sm sticky top-0 z-50 border-b border-red-900">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <div class="font-cinzel text-2xl font-bold text-white">D2R PvP <span class="text-red-600">Nexus</span></div>
-        <div class="space-x-8 text-lg">
-            <a href="index.html" class="nav-link text-gray-300">Home</a>
-            <a href="rules.html" class="nav-link text-gray-300">Rules</a>
-            <a href="events.html" class="nav-link text-white font-semibold">Events</a>
-            <a href="news.html" class="nav-link text-gray-300">News</a>
-            <a href="ladders.html" class="nav-link text-gray-300">Ladders</a>
+    <!-- Navigation Bar (Events link is active) -->
+    <nav class="bg-black bg-opacity-80 backdrop-blur-sm sticky top-0 z-50 border-b border-red-900">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-cinzel text-2xl font-bold text-white">D2R PvP <span class="text-red-600">Nexus</span></div>
+            <div class="space-x-8 text-lg">
+                <a href="index.html" class="nav-link text-gray-300">Home</a>
+                <a href="rules.html" class="nav-link text-gray-300">Rules</a>
+                <a href="events.html" class="nav-link text-white font-semibold">Events</a>
+                <a href="news.html" class="nav-link text-gray-300">News</a>
+                <a href="ladders.html" class="nav-link text-gray-300">Ladders</a>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
+    <!-- Header -->
     <header class="bg-black border-b-4 border-red-800 py-10">
         <div class="container mx-auto px-6 text-center">
             <h1 class="font-cinzel text-5xl md:text-6xl text-red-600 font-bold">Community & Events</h1>
-            <p class="mt-2 text-lg text-gray-400">Tournaments, results, and the Hall of Fame.</p>
+            <p class="mt-2 text-lg text-gray-400">Join tournaments, compete for glory, and see past results.</p>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main class="py-16 md:py-24">
-        <div class="container mx-auto px-6 max-w-5xl">
-
-            <section id="upcoming-events-section">
-                <h2 class="font-cinzel text-4xl text-center text-red-600 font-bold mb-8">Upcoming Events</h2>
+        <div class="container mx-auto px-6 max-w-5xl space-y-16">
+            
+            <!-- Upcoming Events Section -->
+            <div>
+                <h2 class="font-cinzel text-4xl font-bold text-white mb-8 border-l-4 border-red-600 pl-4">Upcoming Events</h2>
                 <div id="upcoming-events-container" class="space-y-8">
-                    <!-- Upcoming events will be injected here -->
+                    <!-- Upcoming events will be loaded here -->
                 </div>
-            </section>
+            </div>
 
-            <div class="my-16 border-t-2 border-dashed border-red-900"></div>
-
-            <section id="past-events-section">
-                <h2 class="font-cinzel text-4xl text-center text-red-600 font-bold mb-8">Hall of Fame</h2>
+            <!-- Hall of Fame / Past Events Section -->
+            <div>
+                <h2 class="font-cinzel text-4xl font-bold text-white mb-8 border-l-4 border-red-600 pl-4">Hall of Fame</h2>
                 <div id="past-events-container" class="space-y-8">
-                    <!-- Past events will be injected here -->
+                    <!-- Past events will be loaded here -->
                 </div>
-            </section>
-
+            </div>
         </div>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-black border-t border-red-900">
         <div class="container mx-auto py-6 px-6 text-center text-gray-500">
             <p>&copy; 2025 D2R PvP Nexus. A community for the fans, by the fans.</p>
@@ -74,80 +79,89 @@
     </footer>
 
     <script>
+        // Function to create the HTML for a single event card
+        function createEventCard(event) {
+            const formattedDate = new Date(event.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit'
+            });
+            
+            // Convert the rich text (Markdown) description to HTML
+            const descriptionHtml = marked.parse(event.body || '');
+            
+            let statusTag = '';
+            if (event.status === 'Upcoming') {
+                statusTag = `<span class="absolute top-4 right-4 text-xs font-bold bg-blue-600 text-white px-3 py-1 rounded-full uppercase tracking-wider">${event.status}</span>`;
+            } else if (event.status === 'Completed') {
+                statusTag = `<span class="absolute top-4 right-4 text-xs font-bold bg-gray-600 text-gray-200 px-3 py-1 rounded-full uppercase tracking-wider">${event.status}</span>`;
+            } else if (event.status === 'In Progress') {
+                statusTag = `<span class="absolute top-4 right-4 text-xs font-bold bg-red-600 text-white px-3 py-1 rounded-full uppercase tracking-wider animate-pulse">${event.status}</span>`;
+            }
+
+            return `
+                <div class="event-card rounded-lg p-8 relative overflow-hidden">
+                    ${statusTag}
+                    <h3 class="font-cinzel text-3xl text-red-600 font-bold mb-2">${event.title}</h3>
+                    <p class="text-md text-gray-400 mb-6 font-semibold">${formattedDate}</p>
+                    <div class="prose-styles max-w-none">
+                        ${descriptionHtml}
+                    </div>
+                </div>
+            `;
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            const renderEvents = (events) => {
-                const upcomingContainer = document.getElementById('upcoming-events-container');
-                const pastContainer = document.getElementById('past-events-container');
-                
-                upcomingContainer.innerHTML = '';
-                pastContainer.innerHTML = '';
-
-                if (!events || events.length === 0) {
-                    upcomingContainer.innerHTML = `<p class="text-center text-gray-400">No upcoming events scheduled. Check back soon!</p>`;
-                    pastContainer.innerHTML = `<p class="text-center text-gray-400">No past events yet.</p>`;
-                    return;
-                }
-
-                events.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-                let upcomingCount = 0;
-                let pastCount = 0;
-
-                events.forEach(event => {
-                    const eventDate = new Date(event.date);
-                    const dateString = eventDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-                    
-                    // UPDATED: Use marked.parse() to convert markdown to HTML
-                    const eventBodyHtml = event.body ? marked.parse(event.body) : '';
-
-                    const eventCard = `
-                        <div class="event-card rounded-lg overflow-hidden flex flex-col md:flex-row">
-                            ${event.image ? `<img src="${event.image}" alt="${event.title}" class="w-full md:w-1/3 object-cover">` : ''}
-                            <div class="p-6 flex flex-col">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h3 class="text-2xl font-bold text-white">${event.title}</h3>
-                                    <span class="status-${event.status.toLowerCase().replace(' ', '')} text-xs font-bold uppercase px-2 py-1 rounded-full whitespace-nowrap">${event.status}</span>
-                                </div>
-                                <p class="text-sm text-gray-400 mb-4">${dateString}</p>
-                                <div class="text-gray-300 prose prose-invert">${eventBodyHtml}</div>
-                            </div>
-                        </div>
-                    `;
-
-                    if (event.status === 'Upcoming' || event.status === 'In Progress') {
-                        upcomingContainer.innerHTML += eventCard;
-                        upcomingCount++;
-                    } else {
-                        pastContainer.innerHTML += eventCard;
-                        pastCount++;
-                    }
-                });
-
-                 if (upcomingCount === 0) {
-                    upcomingContainer.innerHTML = `<p class="text-center text-gray-400">No upcoming events scheduled. Check back soon!</p>`;
-                }
-                 if (pastCount === 0) {
-                    pastContainer.innerHTML = `<p class="text-center text-gray-400">No past events yet.</p>`;
-                }
-            };
-
-            fetch('/_data/events.json')
+            // *** THIS IS THE CORRECTED PATH ***
+            fetch('src/_data/events.json') 
                 .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
+                    if (!response.ok) { throw new Error('Failed to load events.json'); }
                     return response.json();
                 })
-                .then(data => {
-                    renderEvents(data);
+                .then(events => {
+                    const upcomingContainer = document.getElementById('upcoming-events-container');
+                    const pastContainer = document.getElementById('past-events-container');
+                    
+                    if (!events || events.length === 0) {
+                        upcomingContainer.innerHTML = '<p class="text-gray-400">No upcoming events are scheduled. Check back soon!</p>';
+                        pastContainer.innerHTML = '<p class="text-gray-400">No past events have been recorded.</p>';
+                        return;
+                    }
+
+                    // Sort events by date, newest first
+                    events.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    
+                    let upcomingHtml = '';
+                    let pastHtml = '';
+
+                    events.forEach(event => {
+                        if (event.status === 'Completed') {
+                            pastHtml += createEventCard(event);
+                        } else {
+                            // 'Upcoming' and 'In Progress' go to the top section
+                            upcomingHtml += createEventCard(event);
+                        }
+                    });
+
+                    if (upcomingHtml === '') {
+                        upcomingContainer.innerHTML = '<p class="text-gray-400">No upcoming events are scheduled. Check back soon!</p>';
+                    } else {
+                        upcomingContainer.innerHTML = upcomingHtml;
+                    }
+
+                    if (pastHtml === '') {
+                        pastContainer.innerHTML = '<p class="text-gray-400">No past events have been recorded.</p>';
+                    } else {
+                        pastContainer.innerHTML = pastHtml;
+                    }
                 })
                 .catch(error => {
                     console.error('Error loading events data:', error);
-                    renderEvents([]);
+                    document.getElementById('upcoming-events-container').innerHTML = `<p class="text-center text-red-500">Could not load events. Please try again later.</p>`;
                 });
         });
     </script>
-
 </body>
 </html>
-
