@@ -5,11 +5,11 @@ author: bones
 ---
 We're excited to announce the launch of two brand-new ladders, both designed to test your skills in exciting and unconventional ways. If you're looking for a fresh challenge beyond the standard meta, your time has come.
 
-### Ladder 1: Level 59 MLD (Mid-Level Duels)
+### **Ladder 1: Level 59 MLD (Mid-Level Duels)**
 
 We're kicking off a **Level 59 Mid-Level Duels (MLD)** ladder! This is where true theorycrafting shines. Forget your HLD toons for a moment; this ladder is all about optimizing gear, breakpoints, and skill choices within a tight level constraint. It’s a nostalgic and highly competitive bracket that rewards cunning and preparation. Do you have what it takes to dominate the mid-level arena?
 
-### Ladder 2: Stabby Stabs (Melee Necromancer - Poison Dagger)
+### **Ladder 2: Stabby Stabs (Melee Necromancer - Poison Dagger)**
 
 ![](/uploads/ir2fk4e.png)
 
