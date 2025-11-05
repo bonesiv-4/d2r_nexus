@@ -100,5 +100,3 @@ collections:
       - { label: "Publication Date", name: "date", widget: "datetime" }
       - { label: "Author", name: "author", widget: "string" }
       - { label: "Article Content (Body)", name: "body", widget: "markdown" }
-
-```
