@@ -1,64 +1,37 @@
-// This script runs on Netlify's servers every time you publish a change.
-// Its job is to find all your individual event and news files
-// and combine them into single, easy-to-read JSON files for the website.
-
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
 
-console.log("Starting build process...");
+// This is where all the generated JSON files will go
+const dataDir = path.join(__dirname, 'src/_data');
 
-// Function to process a collection (like events or news)
-function buildCollection(collectionName) {
-  const sourceDir = path.join(__dirname, 'src', collectionName);
-  const outputDir = path.join(__dirname, 'src', '_data'); // All JSON files will go here
-  const outputFile = path.join(outputDir, `${collectionName}.json`);
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
 
-  // Check if the source directory (e.g., /src/events) exists
+const buildCollection = (name) => {
+  const sourceDir = path.join(__dirname, 'src', name);
+  const outputFile = path.join(dataDir, `${name}.json`);
+
   if (!fs.existsSync(sourceDir)) {
-    console.log(`Source directory ${sourceDir} not found. Skipping collection '${collectionName}'.`);
-    // Create an empty JSON file so the website doesn't break
-    if (!fs.existsSync(outputDir)) {
-      fs.mkdirSync(outputDir, { recursive: true });
-    }
-    fs.writeFileSync(outputFile, '[]');
+    console.log(`Directory ${name} not found, creating empty file.`);
+    fs.writeFileSync(outputFile, JSON.stringify([]));
     return;
   }
 
   const files = fs.readdirSync(sourceDir);
-  const collectionData = [];
+  const data = files
+    .filter(f => f.endsWith('.md'))
+    .map(filename => {
+      const markdownWithMeta = fs.readFileSync(path.join(sourceDir, filename), 'utf-8');
+      const { data: frontmatter, content } = matter(markdownWithMeta);
+      return { ...frontmatter, body: content };
+    });
 
-  files.forEach(file => {
-    // Make sure we're only reading markdown files
-    if (path.extname(file) === '.md') {
-      const filePath = path.join(sourceDir, file);
-      const fileContent = fs.readFileSync(filePath, 'utf8');
-      const { data, content } = matter(fileContent);
+  fs.writeFileSync(outputFile, JSON.stringify(data, null, 2));
+  console.log(`Successfully built src/_data/${name}.json with ${data.length} items.`);
+};
 
-      collectionData.push({
-        ...data,
-        body: content
-      });
-    }
-  });
-
-  // Create the output directory if it doesn't exist
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
-  }
-
-  // Write the combined data to the JSON file
-  fs.writeFileSync(outputFile, JSON.stringify(collectionData, null, 2));
-  console.log(`Successfully built ${collectionName}.json with ${collectionData.length} items.`);
-}
-
-// --- Main Execution ---
-
-// Process the 'events' collection
+// Process both folders
 buildCollection('events');
-
-// Process the 'news' collection
 buildCollection('news');
-
-console.log("Build process completed successfully!");
-
