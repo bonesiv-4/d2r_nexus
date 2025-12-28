@@ -1,23 +1,17 @@
-# This is the backend configuration. It tells the CMS how to connect to your site.
 backend:
-  name: git-gateway # Use Netlify's Git Gateway for authentication
-  branch: main # The branch to save content to (usually "main" or "master")
+  name: git-gateway
+  branch: main
 
-# This controls where your media (like images) is saved.
-# We've changed this to save to a main "uploads" folder.
 media_folder: "uploads"
 public_folder: "/uploads"
 
-# This defines all the editable sections (collections) of your website.
 collections:
-  # 1. Collection for static pages like Home and Rules
   - name: "website_pages"
     label: "Website Pages"
     files:
-      # --- HOMEPAGE ---
       - label: "Homepage"
         name: "homepage"
-        file: "src/_data/homepage.json" # The file it will edit
+        file: "src/_data/homepage.json"
         fields:
           - { label: "Page Title", name: "title", widget: "string" }
           - { label: "Page Subtitle", name: "subtitle", widget: "string" }
@@ -28,10 +22,9 @@ collections:
             fields:
               - { label: "Feature", name: "feature", widget: "string" }
 
-      # --- RULES PAGE ---
       - label: "Rules & Etiquette Page"
         name: "rules"
-        file: "src/_data/rules.json" # The file it will edit
+        file: "src/_data/rules.json"
         fields:
           - { label: "Page Title", name: "title", widget: "string" }
           - { label: "Page Subtitle", name: "subtitle", widget: "string" }
@@ -47,56 +40,26 @@ collections:
                 fields:
                   - { label: "Rule Title", name: "title", widget: "string" }
                   - { label: "Rule Description", name: "desc", widget: "text" }
-          - label: "Ladder Rules Sections"
-            name: "ladder_sections"
-            widget: "list"
-            fields:
-              - { label: "Section Title", name: "title", widget: "string" }
-              - label: "Rules"
-                name: "rules"
-                widget: "list"
-                fields:
-                  - { label: "Rule Title", name: "title", widget: "string" }
-                  - { label: "Rule Description", name: "desc", widget: "text" }
 
-      # --- LADDERS PAGE ---
-      - label: "Ladders Page"
-        name: "ladders"
-        file: "src/_data/ladders.json" # The file it will edit
-        fields:
-          - { label: "Page Title", name: "title", widget: "string" }
-          - { label: "Page Subtitle", name: "subtitle", widget: "string" }
-          - { label: "Introduction Text", name: "intro", widget: "markdown" }
-          - label: "Ladder List"
-            name: "ladder_list"
-            widget: "list"
-            fields:
-              - { label: "Ladder Name", name: "name", widget: "string" }
-              - { label: "Description", name: "desc", widget: "text" }
-
-  # 2. Collection for repeatable items like Events
-  - name: "community_events"
-    label: "Community Events"
-    folder: "src/events" # Folder where new event files will be created
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - { label: "Event Title", name: "title", widget: "string" }
-      - { label: "Event Date & Time", name: "date", widget: "datetime" }
-      - label: "Event Status"
-        name: "status"
-        widget: "select"
-        options: ["Upcoming", "In Progress", "Completed"]
-      - { label: "Event Details (Body)", name: "body", widget: "markdown" }
-
-  # 3. Collection for repeatable items like News
   - name: "news_articles"
     label: "News Articles"
-    folder: "src/news" # Folder where new news files will be created
+    folder: "src/news"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "Article Title", name: "title", widget: "string" }
       - { label: "Publication Date", name: "date", widget: "datetime" }
       - { label: "Author", name: "author", widget: "string" }
+      - { label: "Featured Video URL (YouTube Link)", name: "video_url", widget: "string", required: false, hint: "Paste a YouTube link here (e.g., https://www.youtube.com/watch?v=...)" }
       - { label: "Article Content (Body)", name: "body", widget: "markdown" }
+
+  - name: "community_events"
+    label: "Community Events"
+    folder: "src/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Event Title", name: "title", widget: "string" }
+      - { label: "Event Date & Time", name: "date", widget: "datetime" }
+      - { label: "Event Status", name: "status", widget: "select", options: ["Upcoming", "In Progress", "Completed"] }
+      - { label: "Event Details (Body)", name: "body", widget: "markdown" }
